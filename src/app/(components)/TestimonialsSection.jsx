@@ -85,7 +85,7 @@ export default function TestimonialsSection() {
         setCurrentIndex(index);
         if (scrollContainerRef.current) {
             scrollContainerRef.current.scrollTo({
-                left: index * 400,
+                left: index * scrollContainerRef.current.offsetWidth * 0.9,
                 behavior: 'smooth',
             });
         }
@@ -107,106 +107,69 @@ export default function TestimonialsSection() {
             </div>
 
             <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-20">
-
-                {/* Header Section */}
                 <div className="text-center mb-8">
                     <p className="text-purple-300 text-sm font-medium mb-4 tracking-wider uppercase">
                         Customer Testimonials
                     </p>
                 </div>
 
-                {/* Door Text Animation */}
                 <div className="absolute top-1/2 left-1/2 z-20 flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2 h-32 pointer-events-none">
-                    <div className={`text-6xl md:text-8xl font-bold text-white transition-all duration-1000 ease-out ${isAnimated ? '-translate-x-32 opacity-0' : 'translate-x-0 opacity-100'}`}>
-                        Happy
-                    </div>
-
-                    <div className={`w-px bg-white/30 mx-8 transition-all duration-1000 ease-out ${isAnimated ? 'h-20 opacity-0' : 'h-0 opacity-100'}`} />
-
-                    <div className={`text-6xl md:text-8xl font-bold text-white transition-all duration-1000 ease-out ${isAnimated ? 'translate-x-32 opacity-0' : 'translate-x-0 opacity-100'}`}>
-                        Sellers
-                    </div>
+                    <div className={`text-4xl sm:text-5xl md:text-8xl font-bold text-white transition-all duration-1000 ease-out ${isAnimated ? '-translate-x-32 opacity-0' : 'translate-x-0 opacity-100'}`}>Happy</div>
+                    <div className={`w-px bg-white/30 mx-4 md:mx-8 transition-all duration-1000 ease-out ${isAnimated ? 'h-20 opacity-0' : 'h-0 opacity-100'}`} />
+                    <div className={`text-4xl sm:text-5xl md:text-8xl font-bold text-white transition-all duration-1000 ease-out ${isAnimated ? 'translate-x-32 opacity-0' : 'translate-x-0 opacity-100'}`}>Sellers</div>
                 </div>
 
-                {/* Testimonials */}
-                <div
-                    className={`w-full max-w-7xl transition-all duration-1000 ease-out delay-500 ${isAnimated ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-75 translate-y-8'}`}
-                >
-                    {/* Arrows */}
-                    <div className="flex justify-center gap-4 mb-8">
-                        <button
-                            onClick={prevTestimonial}
-                            className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
-                        >
-                            <ChevronLeft className="w-6 h-6" />
+                <div className={`w-full max-w-7xl transition-all duration-1000 ease-out delay-500 ${isAnimated ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-75 translate-y-8'}`}>
+                    <div className="flex justify-center gap-4 mb-6 sm:mb-8">
+                        <button onClick={prevTestimonial} className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95">
+                            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
                         </button>
-                        <button
-                            onClick={nextTestimonial}
-                            className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
-                        >
-                            <ChevronRight className="w-6 h-6" />
+                        <button onClick={nextTestimonial} className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95">
+                            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
                         </button>
                     </div>
 
-                    {/* Cards */}
-                    <div
-                        ref={scrollContainerRef}
-                        className="flex gap-6 overflow-x-auto scrollbar-hide pb-4"
-                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                    >
+                    <div ref={scrollContainerRef} className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-hide pb-4 px-2 sm:px-0">
                         {testimonials.map((t, i) => (
-                            <div
-                                key={t.id}
-                                className={`flex-shrink-0 w-96 bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 transition-all duration-500 hover:bg-white/15 hover:scale-105 hover:border-white/30 ${i === currentIndex ? 'ring-2 ring-white/50 scale-105' : ''}`}
-                            >
-                                <Quote className="w-8 h-8 text-purple-300 mb-6" />
-                                <p className="text-white/90 text-lg leading-relaxed mb-6 font-light">"{t.text}"</p>
-                                <div className="flex gap-1 mb-6">
+                            <div key={t.id} className={`flex-shrink-0 w-[90%] sm:w-96 bg-white/10 backdrop-blur-lg rounded-2xl p-6 sm:p-8 border border-white/20 transition-all duration-500 hover:bg-white/15 hover:scale-105 hover:border-white/30 ${i === currentIndex ? 'ring-2 ring-white/50 scale-105' : ''}`}>
+                                <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-purple-300 mb-4 sm:mb-6" />
+                                <p className="text-white/90 text-base sm:text-lg leading-relaxed mb-4 sm:mb-6 font-light">"{t.text}"</p>
+                                <div className="flex gap-1 mb-4 sm:mb-6">
                                     {Array.from({ length: t.rating }).map((_, i) => (
-                                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                                        <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-yellow-400 text-yellow-400" />
                                     ))}
                                 </div>
                                 <div className="flex items-center gap-4">
                                     <div className="relative">
-                                        <img
-                                            src={t.image}
-                                            alt={t.name}
-                                            className="w-16 h-16 rounded-full object-cover border-2 border-white/30"
-                                        />
+                                        <img src={t.image} alt={t.name} className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover border-2 border-white/30" />
                                         <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-500/20 to-blue-500/20"></div>
                                     </div>
                                     <div>
-                                        <h4 className="text-white font-semibold text-lg">{t.name}</h4>
-                                        <p className="text-purple-300 text-sm">{t.role}</p>
+                                        <h4 className="text-white font-semibold text-base sm:text-lg">{t.name}</h4>
+                                        <p className="text-purple-300 text-xs sm:text-sm">{t.role}</p>
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    {/* Dots */}
-                    <div className="flex justify-center gap-2 mt-8">
+                    <div className="flex justify-center gap-2 mt-6 sm:mt-8">
                         {testimonials.map((_, i) => (
-                            <button
-                                key={i}
-                                onClick={() => scrollToTestimonial(i)}
-                                className={`w-3 h-3 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-white scale-125' : 'bg-white/30 hover:bg-white/50 hover:scale-110'}`}
-                            />
+                            <button key={i} onClick={() => scrollToTestimonial(i)} className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-white scale-125' : 'bg-white/30 hover:bg-white/50 hover:scale-110'}`} />
                         ))}
                     </div>
                 </div>
             </div>
 
-            {/* Scrollbar Hide */}
             <style jsx>{`
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
+                .scrollbar-hide {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+                .scrollbar-hide::-webkit-scrollbar {
+                    display: none;
+                }
+            `}</style>
         </section>
     );
 }
