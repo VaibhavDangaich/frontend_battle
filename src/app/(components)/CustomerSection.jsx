@@ -194,7 +194,7 @@ const CustomerSection = () => {
 
     // Auto-rotate logos every 4 seconds
     useEffect(() => {
-        const interval = setInterval(transitionToNextSet, 4000);
+        const interval = setInterval(transitionToNextSet, 1000);
         return () => clearInterval(interval);
     }, [nextSet, isHovered]);
 
