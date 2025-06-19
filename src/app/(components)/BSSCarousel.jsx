@@ -111,7 +111,6 @@ const BSSCarousel = () => {
                         </div>
                     </div>
                 );
-
             case 'charging':
                 return (
                     <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl">
@@ -137,7 +136,6 @@ const BSSCarousel = () => {
                         </div>
                     </div>
                 );
-
             case 'catalog':
                 return (
                     <div className="space-y-4">
@@ -162,7 +160,6 @@ const BSSCarousel = () => {
                         </div>
                     </div>
                 );
-
             case 'events':
                 return (
                     <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl">
@@ -180,26 +177,19 @@ const BSSCarousel = () => {
                         </div>
                     </div>
                 );
-
             default:
                 return null;
         }
     };
 
     return (
-        <div className="min-h-screen bg-[#9FB4BA] flex flex-col items-center justify-center p-8">
-            {/* Header */}
+        <div className="min-h-screen bg-[#9FB4BA] flex flex-col items-center justify-center p-4 md:p-8">
             <div className="text-center mb-12">
-                <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-                    Unparalleled
-                </h1>
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-700">
-                    BSS/OSS Capabilities
-                </h2>
+                <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-4">Unparalleled</h1>
+                <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-700">BSS/OSS Capabilities</h2>
             </div>
 
-            {/* Tab Navigation */}
-            <div className="flex gap-2 mb-8 bg-white/50 backdrop-blur-sm rounded-2xl p-2">
+            <div className="flex flex-wrap justify-center gap-2 mb-8 bg-white/50 backdrop-blur-sm rounded-2xl p-2">
                 {tabs.map((tab, index) => {
                     const IconComponent = tab.icon;
                     const isActive = activeTab === index;
@@ -209,30 +199,20 @@ const BSSCarousel = () => {
                             key={tab.id}
                             onClick={() => handleTabClick(index)}
                             className={`relative flex items-center gap-3 rounded-xl transition-all duration-500 ease-out overflow-hidden ${isActive
-                                    ? `${tab.color} shadow-lg px-8 py-5 min-w-[280px] transform scale-105`
-                                    : 'bg-white/70 hover:bg-white/90 px-4 py-3 min-w-[140px] transform scale-95'
-                                }`}
+                                ? `${tab.color} shadow-lg px-8 py-5 min-w-[240px] transform scale-105`
+                                : 'bg-white/70 hover:bg-white/90 px-4 py-3 min-w-[140px] transform scale-95'}`}
                         >
-                            {/* Full Tab Progress Bar Background */}
                             {isActive && (
                                 <div
                                     className="absolute inset-0 bg-white/20 transition-all duration-100 ease-linear"
-                                    style={{
-                                        width: `${progress}%`,
-                                        borderRadius: 'inherit'
-                                    }}
+                                    style={{ width: `${progress}%`, borderRadius: 'inherit' }}
                                 />
                             )}
-
-                            {/* Tab Content */}
                             <div className="relative z-10 flex items-center gap-3">
-                                <div className={`rounded-lg transition-all duration-300 ${isActive ? 'bg-white/80 p-3' : 'bg-gray-100 p-2'
-                                    }`}>
-                                    <IconComponent className={`text-gray-700 transition-all duration-300 ${isActive ? 'w-6 h-6' : 'w-4 h-4'
-                                        }`} />
+                                <div className={`rounded-lg transition-all duration-300 ${isActive ? 'bg-white/80 p-3' : 'bg-gray-100 p-2'}`}>
+                                    <IconComponent className={`text-gray-700 transition-all duration-300 ${isActive ? 'w-6 h-6' : 'w-4 h-4'}`} />
                                 </div>
-                                <span style={{fontFamily: 'var(--font-ibm-plex-mono)'}} className={`font-semibold text-gray-800 transition-all duration-300 ${isActive ? 'text-xl tracking-wide' : 'text-sm'
-                                    }`}>
+                                <span className={`font-semibold text-gray-800 transition-all duration-300 ${isActive ? 'text-base md:text-xl tracking-wide' : 'text-sm'}`} style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>
                                     {tab.title}
                                 </span>
                             </div>
@@ -241,54 +221,45 @@ const BSSCarousel = () => {
                 })}
             </div>
 
-            {/* Content Area */}
-            <div className="w-full max-w-6xl bg-white/30 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    {/* Text Content */}
-                    <div className="space-y-6 ">
-                        <h3 className="text-4xl font-bold text-gray-800 " style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>
-                            {tabs[activeTab].content.title}
-                        </h3>
-                        <p className="text-lg text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>
-                            {tabs[activeTab].content.description}
-                        </p>
-
-                        {/* Navigation Arrows */}
+            <div className="w-full max-w-6xl bg-white/30 backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-2xl">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    <div className="space-y-6">
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800" style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>{tabs[activeTab].content.title}</h3>
+                        <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed" style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>{tabs[activeTab].content.description}</p>
                         <div className="flex gap-4 pt-4">
-                            <button style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+                            <button
                                 onClick={() => handleTabClick((activeTab - 1 + tabs.length) % tabs.length)}
                                 className="p-3 bg-white/80 hover:bg-white rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                                style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
                             >
                                 <ChevronLeft className="w-6 h-6 text-gray-700" />
                             </button>
-                            <button style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+                            <button
                                 onClick={() => handleTabClick((activeTab + 1) % tabs.length)}
                                 className="p-3 bg-white/80 hover:bg-white rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                                style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
                             >
                                 <ChevronRight className="w-6 h-6 text-gray-700" />
                             </button>
                         </div>
                     </div>
-
-                    {/* Mockup Content */}
                     <div className="flex justify-center">
-                        <div className="transform transition-all duration-700 ease-out ">
+                        <div className="transform transition-all duration-700 ease-out">
                             {renderMockup(tabs[activeTab].content.mockup)}
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Bottom Navigation */}
-            <div className="mt-12 bg-gray-800 rounded-2xl px-8 py-4">
-                <div className="flex items-center gap-8 text-white">
-                    <div className="flex items-center gap-4">
+            <div className="mt-12 bg-gray-800 rounded-2xl px-6 py-4 w-full max-w-4xl">
+                <div className="flex flex-wrap justify-between items-center gap-4 text-white">
+                    <div className="flex flex-wrap gap-4">
                         <span className="text-sm opacity-75" style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>PRODUCTS +</span>
                         <span className="text-sm opacity-75" style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>SOLUTIONS +</span>
                         <span className="text-sm opacity-75" style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>RESOURCES +</span>
                         <span className="text-sm opacity-75" style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>SERVICES</span>
                     </div>
-                    <button style={{ fontFamily: 'var(--font-ibm-plex-mono)' }} className="bg-cyan-500 hover:bg-cyan-600 px-6 py-2 rounded-lg font-semibold transition-colors duration-300">
+                    <button className="bg-cyan-500 hover:bg-cyan-600 px-6 py-2 rounded-lg font-semibold transition-colors duration-300" style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>
                         BOOK A MEETING
                     </button>
                 </div>
