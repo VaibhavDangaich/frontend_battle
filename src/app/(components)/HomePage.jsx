@@ -202,7 +202,7 @@ const InteractiveHomepage = () => {
             </div>
 
             {/* Rating Badges */}
-            <div className="absolute top-20 left-1/2 transform -translate-x-1/2 flex gap-8 z-30 ">
+            <div className="absolute top-20 left-1/2 transform -translate-x-1/2 flex gap-8 z-30 flex-wrap w-screen justify-center ">
                 <div className="flex items-center gap-1 text-white/90 text-lg whitespace-nowrap ">
                     <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     <span className='font-semibold text-slate-200 leading-relaxed'>4.8 rating on <span className="font-semibold text-slate-200 ">Capterra</span></span>
